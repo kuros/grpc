@@ -1,8 +1,5 @@
 package in.kuros.blog.grpc;
 
-import in.kuros.grpc.AddResponse;
-import in.kuros.grpc.CalculatorGrpc;
-import in.kuros.grpc.OperandRequest;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;

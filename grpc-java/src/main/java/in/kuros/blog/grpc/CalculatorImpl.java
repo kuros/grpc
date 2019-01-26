@@ -1,8 +1,6 @@
 package in.kuros.blog.grpc;
 
-import in.kuros.grpc.AddResponse;
-import in.kuros.grpc.CalculatorGrpc.CalculatorImplBase;
-import in.kuros.grpc.OperandRequest;
+import in.kuros.blog.grpc.CalculatorGrpc.CalculatorImplBase;
 import io.grpc.stub.StreamObserver;
 
 public class CalculatorImpl extends CalculatorImplBase {

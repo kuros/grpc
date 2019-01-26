@@ -1,7 +1,7 @@
 syntax = "proto3";
 
 option java_multiple_files = true;
-package in.kuros.grpc;
+package in.kuros.blog.grpc;
 
 message OperandRequest {
     int32 X = 1;
