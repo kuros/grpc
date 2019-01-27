@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+package in.kuros.blog.grpc;
+
+message OperandRequest {
+    int32 X = 1;
+    int32 Y = 2;
+}
+
+message AddResponse {
+    int64 result = 1;
+}
+
+service Calculator {
+    rpc add(OperandRequest) returns (AddResponse);
+}
