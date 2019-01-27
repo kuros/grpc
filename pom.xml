@@ -10,6 +10,7 @@
     <modules>
         <module>grpc-java</module>
         <module>grpc-authentication</module>
+        <module>grpc-interceptors</module>
     </modules>
     <packaging>pom</packaging>
 
