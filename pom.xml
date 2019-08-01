@@ -11,6 +11,7 @@
         <module>grpc-java</module>
         <module>grpc-authentication</module>
         <module>grpc-interceptors</module>
+        <module>grpc-streaming</module>
     </modules>
     <packaging>pom</packaging>
 

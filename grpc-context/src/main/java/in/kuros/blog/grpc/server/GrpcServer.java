@@ -8,7 +8,7 @@ public class GrpcServer {
     public static void main(String[] args) throws Exception {
         final Server server = ServerBuilder.forPort(8080)
                 .addService(new CalculatorImpl())
-                .intercept(new AuthorizationInterceptor(userService))
+                .intercept(new AuthorizationInterceptor())
                 .build();
 
         server.start();

@@ -19,4 +19,12 @@ public class UserInfo {
     public List<String> getRoles() {
         return roles;
     }
+
+    @Override
+    public String toString() {
+        return "UserInfo{" +
+                "userName='" + userName + '\'' +
+                ", roles=" + roles +
+                '}';
+    }
 }

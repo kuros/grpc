@@ -12,7 +12,7 @@ public class UserServiceImpl implements UserService {
     public UserInfo validate(final String authToken) {
 
         if (authToken == null) {
-            throw new StatusRuntimeException(Status.FAILED_PRECONDITION);
+            throw new StatusRuntimeException(Status.UNAUTHENTICATED);
         }
 
         return loadUserByAuthToken(authToken);
@@ -21,14 +21,17 @@ public class UserServiceImpl implements UserService {
     private UserInfo loadUserByAuthToken(final String authToken) {
         // Fetch from DB, here I am validating in line
 
-        if (!authToken.equals("valid_token")) {
-            throw new StatusRuntimeException(Status.FAILED_PRECONDITION);
+        if (authToken.equals("admin_token")) {
+            List<String> roles = new ArrayList<>();
+            roles.add("ADMIN");
+            roles.add("USER");
+
+            return new UserInfo("Rohit", roles);
         }
 
         List<String> roles = new ArrayList<>();
-        roles.add("ADMIN");
         roles.add("USER");
 
-        return new UserInfo("Rohit", roles);
+        return new UserInfo("John", roles);
     }
 }

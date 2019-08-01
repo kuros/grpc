@@ -10,25 +10,22 @@ import io.grpc.ManagedChannelBuilder;
 public class GrpcClient {
 
     public static void main(String[] args) {
-        ManagedChannel adminChannel = ManagedChannelBuilder.forAddress("localhost", 8080)
-                .usePlaintext()
-                .intercept(new AuthTokenProvideInterceptor("admin_token"))
-                .build();
 
-        ManagedChannel userChannel = ManagedChannelBuilder.forAddress("localhost", 8080)
-                .usePlaintext()
-                .intercept(new AuthTokenProvideInterceptor("user_token"))
-                .build();
+        System.out.println("****** Admin Role ******");
+        execute("admin_token");
 
-        System.out.println("****** Admin ******");
-        execute(adminChannel);
-
-        System.out.println("****** User ******");
-        execute(userChannel);
+        System.out.println("****** User Role ******");
+        execute("user_token");
 
     }
 
-    private static void execute(final ManagedChannel channel) {
+    private static void execute(final String authToken) {
+
+        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 8080)
+                .usePlaintext()
+                .intercept(new AuthTokenProvideInterceptor(authToken))
+                .build();
+
         final CalculatorBlockingStub blockingStub = CalculatorGrpc.newBlockingStub(channel);
 
         final AddResponse blockResponse = blockingStub.add(OperandRequest.newBuilder().setX(10).setY(20).build());
